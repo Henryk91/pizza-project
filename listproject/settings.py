@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4dog#kwfxl4^@)fw(cbzc^xe=e9c%hd4*qqhig-ek_47trgr-b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://trello-pizza-project.herokuapp.com/', 'http://127.0.0.1', 'http://localhost', 'localhost']
+ALLOWED_HOSTS = ['trello-pizza-project.herokuapp.com','https://trello-pizza-project.herokuapp.com/', 'http://127.0.0.1', 'http://localhost', 'localhost']
 
 
 # Application definition
