@@ -2,7 +2,7 @@
 
 This is a python django serverside app to integrate with Trello boards. (https://trello.com/)<br> With this project you will be able to view your boards, lists, cards and create cards on a Trello list.
 
-A running example of this project: https://trello-project.henryk91.repl.co/ <br><br>
+A running example of this project: https://trello-pizza-project.herokuapp.com <br><br>
 NB: This project is not intended to be used in production 
 <hr>
 <br>
