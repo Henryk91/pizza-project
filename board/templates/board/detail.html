@@ -1,0 +1,27 @@
+{% extends "board/base.html" %}
+{% block content %}
+<div id="header">
+  <a id="back-btn" href="/board/">
+    Back
+  </a>
+  <h2 id="page-title">{{board_obj.name}}</h2>
+</div>
+<div class="list-container" id="board">
+  {% for list in detail %}
+  <div class="list-item">
+
+    <div class="list-header">
+      <span>{{ list.name }}</span>
+      <a href="{% url 'board:new-card' list.id %}">
+        <div class="add-btn">+ Add</div>
+      </a>
+    </div>
+    <ul class="card-item-box">
+      {% for card in list.cards %}
+      <li class="card-item">{{ card.name }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends "board/base.html" %}
+{% block content %}
+<div id="header">
+  <a id="back-btn" href="{% url 'board:detail' list_obj.idBoard %}">
+    Back
+  </a>
+  <h2 id="page-title">Add New Card </h2>
+</div>
+<div class="list-container" id="board">
+  <div class="list-item">
+    <div class="card-item-box">
+      
+      <div class="card-item">
+        <div class="new-card-header">
+          <span>Board: {{ board_obj.name }}</span>
+          <span>List: {{ list_obj.name }}</span>
+        </div>
+        <form id="new-card-form" action="{% url 'board:create-card' list_obj.listId %}" method="post">
+          {% csrf_token %}
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <input placeholder="Add card here..." type="text" name="new_card" id="new_card" value="{{ new_card.id }}">
+          <input class="add-btn" id="submit-add" type="submit" value="+ Add">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

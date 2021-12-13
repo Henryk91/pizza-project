@@ -1,0 +1,138 @@
+
+body {
+    background: #f3f4f5;
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+#board{
+    display: flex;
+    justify-content: center;
+}
+
+.list-item{
+    width: 400px;
+    width: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
+    background: #e4ebef;
+    padding: 30px;
+    max-width: 40vw;
+}
+#header{
+    width: 100vw;
+    display: inline-flex;
+    justify-content: center;
+    background: #343951;
+    color: white;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+#back-btn{
+    all: unset;
+    position: absolute;
+    left: 40px;
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+#back-btn:hover{
+    color: rgba(255, 255, 255, 0.5);
+}
+.list-container{
+    padding: 40px;
+}
+.card-item-box{
+    padding: unset;
+}
+.card-item-box > a{
+    text-decoration: unset;
+}
+.list-header > a{
+    text-decoration: unset;
+}
+.card-item{
+    list-style-type: none;
+    list-style-type: none;
+    padding: unset;
+    background: white;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 7px rgb(0 0 0 / 15%);
+    color: #5c5c5c;
+    margin-bottom: 20px;
+}
+.board-hover:hover{
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 1px 1px 7px rgb(0 0 0 / 25%);
+}
+.list-header{
+    color: #343951;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.new-card-header{
+    color: #343951;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#page-title{
+    margin: unset;
+}
+.add-btn{
+    color: white;
+    font-weight: initial;
+    background: #5EA5EE;
+    padding: 10px;
+    border-radius: 3px;
+}
+.add-btn:hover{
+    background: rgba(94, 165, 238, 0.4);
+}
+
+#submit-add{
+    border: unset;
+    width: fit-content;
+}
+
+#new-item-field{
+    border: unset;
+    padding-left: unset;
+}
+#new_card{
+    margin-bottom: 20px;
+    height: 40px;
+    padding-left: 20px;
+    width: calc(100% - 25px);
+    font-size: 16px;
+}
+
+#new-card-form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+@media (max-width: 800px){
+    .list-item{
+        max-width: unset;
+        max-width: 55vw;
+        max-width: calc(100vw - 60px);
+        margin: unset;
+    }
+
+    #board {
+        flex-direction: column;
+    }
+    .list-container {
+        padding: 0px;
+    }
+    #back-btn{
+        left: 25px;
+    }
+}
