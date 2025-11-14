@@ -10,7 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
+from urllib.parse import urlparse
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # For serving static files in production
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -75,12 +82,33 @@ WSGI_APPLICATION = 'listproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+DEFAULT_SQLITE_DB = {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': BASE_DIR / 'db.sqlite3',
 }
+
+database_url = os.getenv('DATABASE_URL')
+postgres_sslmode = os.getenv('DB_SSLMODE', 'require')
+
+db_from_url = None
+if database_url:
+    parsed = urlparse(database_url)
+    if parsed.scheme.startswith('postgres'):
+        db_from_url = {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': parsed.path[1:],
+            'USER': parsed.username,
+            'PASSWORD': parsed.password,
+            'HOST': parsed.hostname,
+            'PORT': parsed.port or '5432',
+            'OPTIONS': {'sslmode': postgres_sslmode},
+        }
+
+if db_from_url:
+    
+    DATABASES = {'default': db_from_url}
+else:
+    DATABASES = {'default': DEFAULT_SQLITE_DB}
 
 
 # Password validation
@@ -118,6 +146,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

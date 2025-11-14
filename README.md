@@ -14,8 +14,8 @@ NB: This project is not intended to be used in production
 1. Make sure you have python 3 or later
 2. Make sure you have virtualenv (python3 -m pip install --user virtualenv)
 3. CD into project directory
-3. run: python3 -m venv env 
-4. run: source env/bin/activate
+3. run: python3 -m venv .venv 
+4. run: source .venv/bin/activate
 5. run: pip install -r requirements.txt
 
 ### Setting up Trello

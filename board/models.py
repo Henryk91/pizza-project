@@ -17,7 +17,7 @@ class List(models.Model):
                     idBoard= item['idBoard'])
                 
             except Exception as e:
-                print('Error', e)
+                print('Add Multiple lists Error', e)
         return lists
 
 class Board(models.Model):
@@ -31,7 +31,7 @@ class Board(models.Model):
                     name= item['name'],
                     idBoard= item['id'])
             except Exception as e:
-                print('Error', e)
+                print('Add Multiple Boards Error', e)
         return boards
     
     def get_name(self):
@@ -53,5 +53,5 @@ class Card(models.Model):
                     idBoard= item['idBoard'],
                     )
             except Exception as e:
-                print('Error', e)
+                print('Add Multiple card Error', e)
         return boards
